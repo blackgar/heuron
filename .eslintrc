@@ -1,0 +1,28 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["react-app", "plugin:prettier/recommended"],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "ignorePatterns": ["node_modules/"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-var-requires": 0,
+    "no-var": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "eqeqeq": "warn",
+    "dot-notation": "warn",
+    "no-unused-vars": "warn",
+    "react/destructuring-assignment": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/no-direct-mutation-state": "warn",
+    "react/jsx-no-useless-fragment": "warn",
+    "react/no-unused-state": "warn",
+    "react/jsx-key": "warn",
+    "react/self-closing-comp": "warn",
+    "react/jsx-curly-brace-presence": "warn"
+  }
+}
