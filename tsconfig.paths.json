@@ -10,8 +10,7 @@
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@utils/*": ["src/utils/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@atom": ["src/atom.tsx"]
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }
