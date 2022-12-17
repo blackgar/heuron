@@ -15,10 +15,6 @@ npm install
 npm start
 ```
 
-## 🌏 배포링크
-
-http://wanted610.s3-website.ap-northeast-2.amazonaws.com/
-
 ## 👋 자기소개
 
 <table>
