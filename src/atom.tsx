@@ -5,6 +5,6 @@ const { persistAtom } = recoilPersist();
 
 export const imageListAtom = atom({
   key: 'imageList',
-  default: null,
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
