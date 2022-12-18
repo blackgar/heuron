@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { useNavigate } from 'react-router-dom';
 import { imageListAtom } from '@/atom';
 
 interface UseMutationState<T> {
@@ -21,7 +20,6 @@ function useMutation<T = any>(): UseMutationResult<T> {
 
   function mutation() {
     if (imageList.length !== 0) return;
-    console.log('Fetch');
     setState(prev => ({ ...prev, loading: true }));
     fetch(`${process.env.REACT_APP_API_URL}`, {
       method: 'GET',
