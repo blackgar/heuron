@@ -6,7 +6,6 @@ interface UseMutationState<T> {
   loading: boolean;
   data?: T;
   error?: object;
-  accessToken?: string;
 }
 type UseMutationResult<T> = [(data?: any) => void, UseMutationState<T>];
 
