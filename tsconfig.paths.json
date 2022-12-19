@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@atom": ["./src/atom.tsx"],
       "@pages/*": ["./src/pages/*"],
       "@utils/*": ["./src/utils/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@constants/*": ["./src/common/constants/*"],
       "@styles/*": ["./src/common/styles/*"],
-      "@types/*": ["./src/common/types/*"],
+      "@/types/*": ["./src/common/types/*"],
       "@atoms/*": ["./src/components/atoms/*"],
       "@molecules/*": ["./src/components/molecules/*"],
       "@organisms/*": ["./src/components/organisms/*"],
