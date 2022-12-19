@@ -25,7 +25,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  height: 5rem;
+  height: 3rem;
   width: auto;
 `;
 
