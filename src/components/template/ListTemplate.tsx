@@ -1,5 +1,12 @@
+import ListTable from '@organisms/ListTable';
+import { Container } from '@styles/list/style';
+
 const ListTemplate = () => {
-  return <div>ListTemplate</div>;
+  return (
+    <Container>
+      <ListTable />
+    </Container>
+  );
 };
 
 export default ListTemplate;

@@ -16,6 +16,8 @@
     "craco-alias": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-grid-gallery": "^1.0.0",
+    "react-image-lightbox": "^5.1.4",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
     "recoil": "^0.7.6",
