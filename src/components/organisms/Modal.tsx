@@ -1,37 +1,76 @@
 import Canvas from '@atoms/Canvas';
 import Title from '@atoms/Title';
-import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 interface DataProps {
+  len: number;
   src: string;
   author: string;
+  index: number;
+  setIndex: Dispatch<SetStateAction<number>>;
   openModal: boolean;
   setOpenModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const Modal = ({ src, author, openModal, setOpenModal }: DataProps) => {
+const Modal = ({ len, src, author, index, setIndex, openModal, setOpenModal }: DataProps) => {
+  const zoomSpeed = 0.1;
+
+  let firstX = -1;
+  const [zoom, setZoom] = useState(1);
+  // const [firstX, setFirstX] = useState(-1);
+  // const [firstY, setFirstY] = useState(-1);
   const outside = useRef<any>(null);
 
   const handleOutside = (e: MouseEvent) => {
     if (!outside.current.contains(e.target)) toggleSide();
+    // setFirstX(e.clientX);
+    // setFirstY(e.clientY);
+    console.log(e.clientX, e.clientY);
+    firstX = e.clientX;
   };
 
   const toggleSide = () => {
     setOpenModal(false);
   };
-
+  const zoomCanvas = (e: MouseEvent) => {
+    const sumX = e.clientX - firstX;
+    console.log(e.clientX, e.clientY);
+    console.log(sumX);
+    // sumX + sumY > 0
+    //   ? (zoom += ((sumX + sumY) % 50) * zoomSpeed)
+    //   : (zoom -= ((sumX + sumY) % 50) * zoomSpeed);
+    sumX > 0 ? setZoom(zoom + (sumX / 50) * zoomSpeed) : setZoom(zoom + (sumX / 50) * zoomSpeed);
+  };
   useEffect(() => {
     document.addEventListener('mousedown', handleOutside);
     return () => {
       document.removeEventListener('mousedown', handleOutside);
     };
   });
+  useEffect(() => {
+    document.addEventListener('wheel', (e: any) => {
+      if (e.deltaY > 0) {
+        setIndex((index + 1) % len);
+      } else {
+        setIndex((index + len - 1) % len);
+      }
+    });
+  });
+  useEffect(() => {
+    document.addEventListener('mousedown', () => {
+      document.addEventListener('mousemove', zoomCanvas);
+    });
+    document.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', zoomCanvas);
+    });
+  });
+
   return (
     <ModalContainer>
       <Title title={author} />
       <Btn onClick={() => setOpenModal(!openModal)}>X</Btn>
       <CanvasWrapper ref={outside}>
-        <Canvas src={src} />
+        <Canvas src={src} zoom={zoom} />
       </CanvasWrapper>
       <Backdrop />
     </ModalContainer>

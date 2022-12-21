@@ -1,17 +1,19 @@
 import { MAX_CANVAS_HEIGHT, MAX_CANVAS_WIDTH } from '@constants/constant';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 interface DataProps {
   src: string;
+  zoom: number;
 }
 
-const Canvas = ({ src }: DataProps) => {
+const Canvas = ({ src, zoom }: DataProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
-
+    context?.clearRect(0, 0, MAX_CANVAS_WIDTH, MAX_CANVAS_HEIGHT);
     const image = new Image();
     image.src = src;
     image.onload = () => {
@@ -33,9 +35,16 @@ const Canvas = ({ src }: DataProps) => {
       );
       // 중앙으로부터 같은 위아래, 같은 왼오여야 한다.
     };
-  });
-
-  return <CanvasImg ref={canvasRef} width={MAX_CANVAS_WIDTH} height={MAX_CANVAS_HEIGHT} />;
+  }, [src]);
+  console.log('zoom', zoom);
+  return (
+    <CanvasImg
+      ref={canvasRef}
+      width={MAX_CANVAS_WIDTH}
+      height={MAX_CANVAS_HEIGHT}
+      style={{ transform: `scale(${zoom > 5 ? 5 : zoom})` }}
+    />
+  );
 };
 
 const CanvasImg = styled.canvas`

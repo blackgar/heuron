@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import { imageListAtom } from '@atom';
 import { Gallery, Image } from 'react-grid-gallery';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '@organisms/Modal';
 import { Container } from '@styles/list/style';
 
@@ -13,14 +13,16 @@ const ImageGallery = () => {
     setOpenModal(true);
     setIndex(idx);
   };
-  console.log(openModal);
-  console.log(index);
+
   return (
     <Container>
       {openModal && (
         <Modal
+          len={imageList.length}
           src={imageList[index].src}
           author={imageList[index].author}
+          index={index}
+          setIndex={setIndex}
           openModal={openModal}
           setOpenModal={setOpenModal}
         />
