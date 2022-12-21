@@ -1,3 +1,4 @@
+import Canvas from '@atoms/Canvas';
 import Title from '@atoms/Title';
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import styled from 'styled-components';
@@ -29,7 +30,9 @@ const Modal = ({ src, author, openModal, setOpenModal }: DataProps) => {
     <ModalContainer>
       <Title title={author} />
       <Btn onClick={() => setOpenModal(!openModal)}>X</Btn>
-      <Image src={src} alt="" ref={outside} />
+      <CanvasWrapper ref={outside}>
+        <Canvas src={src} />
+      </CanvasWrapper>
       <Backdrop />
     </ModalContainer>
   );
@@ -47,9 +50,13 @@ const ModalContainer = styled.div`
   z-index: 5;
 `;
 
-const Image = styled.img`
+const CanvasWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: auto;
-  height: 65%;
+  top: 50%;
+  left: 50%;
   z-index: 20;
   opacity: 1;
 `;
