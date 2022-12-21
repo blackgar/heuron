@@ -1,5 +1,7 @@
-const DetailTemplate = () => {
-  return <div>DetailTemplate</div>;
-};
+import DetailTemplate from '@template/DetailTemplate';
 
-export default DetailTemplate;
+function ImageDetail() {
+  return <DetailTemplate />;
+}
+
+export default ImageDetail;
