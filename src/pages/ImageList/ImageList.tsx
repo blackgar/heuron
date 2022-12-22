@@ -12,13 +12,13 @@ function ImageList() {
 
   useEffect(() => {
     getList();
-  });
+  }, []);
 
   useEffect(() => {
     if (data) {
       setImageList(data);
     }
-  });
+  }, [data]);
 
   return <Container>{loading ? <Loading /> : <ListTemplate />}</Container>;
 }
