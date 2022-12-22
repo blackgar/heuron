@@ -8,17 +8,17 @@ import { Container } from '@styles/list';
 
 function ImageList() {
   const [getList, { data, loading }] = useMutation();
-  const [imageList, setImageList] = useRecoilState(imageListAtom);
+  const [, setImageList] = useRecoilState(imageListAtom);
 
   useEffect(() => {
     getList();
-  }, []);
+  });
 
   useEffect(() => {
     if (data) {
       setImageList(data);
     }
-  }, [data]);
+  });
 
   return <Container>{loading ? <Loading /> : <ListTemplate />}</Container>;
 }
