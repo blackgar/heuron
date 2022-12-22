@@ -1,5 +1,7 @@
+import DetailTemplate from '@template/DetailTemplate';
+
 function ImageDetail() {
-  return <div>ImageDetail</div>;
+  return <DetailTemplate />;
 }
 
 export default ImageDetail;

@@ -1,5 +1,5 @@
+import { HeaderWrapper, Image } from '@styles/header';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 const Header = () => {
   return (
@@ -10,23 +10,5 @@ const Header = () => {
     </HeaderWrapper>
   );
 };
-
-const HeaderWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  height: 100%;
-  border-bottom: 2px solid #dfe0e2;
-  background-color: white;
-  padding: 1rem 2rem;
-`;
-
-const Image = styled.img`
-  height: 3rem;
-  width: auto;
-`;
 
 export default Header;

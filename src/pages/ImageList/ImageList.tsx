@@ -3,25 +3,24 @@ import useMutation from '@hooks/useMutation';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { imageListAtom } from '@atom';
-import { Container } from '@styles/list/style';
+import Loading from '@organisms/Loading';
+import { Container } from '@styles/list';
 
 function ImageList() {
   const [getList, { data, loading }] = useMutation();
-  const [imageList, setImageList] = useRecoilState(imageListAtom);
+  const [, setImageList] = useRecoilState(imageListAtom);
 
   useEffect(() => {
     getList();
-  }, []);
+  });
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       setImageList(data);
     }
-  }, [data]);
-  console.log(imageList);
+  });
 
-  return <>{loading ? <Container>Loading...</Container> : <ListTemplate />}</>;
+  return <Container>{loading ? <Loading /> : <ListTemplate />}</Container>;
 }
 
 export default ImageList;

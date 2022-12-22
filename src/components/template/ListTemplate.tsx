@@ -1,10 +1,10 @@
-import ListTable from '@organisms/ListTable';
-import { Container } from '@styles/list/style';
+import ImageGallery from '@organisms/ImageGallery';
+import { Container } from '@styles/list';
 
 const ListTemplate = () => {
   return (
     <Container>
-      <ListTable />
+      <ImageGallery />
     </Container>
   );
 };
