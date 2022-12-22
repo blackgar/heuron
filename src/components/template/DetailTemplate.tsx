@@ -1,7 +1,7 @@
-import DetailTemplate from '@template/DetailTemplate';
+import CanvasContent from '@molecules/CanvasContent';
 
-function ImageDetail() {
-  return <DetailTemplate />;
+function DetailTemplate() {
+  return <CanvasContent />;
 }
 
-export default ImageDetail;
+export default DetailTemplate;

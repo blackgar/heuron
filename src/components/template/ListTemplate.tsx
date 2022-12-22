@@ -1,5 +1,5 @@
 import ImageGallery from '@organisms/ImageGallery';
-import { Container } from '@styles/list/style';
+import { Container } from '@styles/list';
 
 const ListTemplate = () => {
   return (

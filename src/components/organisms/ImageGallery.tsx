@@ -1,34 +1,19 @@
 import { useRecoilValue } from 'recoil';
 import { imageListAtom } from '@atom';
-import { Gallery, Image } from 'react-grid-gallery';
-import { useState, useEffect } from 'react';
-import Modal from '@organisms/Modal';
-import { Container } from '@styles/list/style';
+import { Gallery } from 'react-grid-gallery';
+import { Container } from '@styles/list';
+import { useNavigate } from 'react-router-dom';
 
 const ImageGallery = () => {
-  const [index, setIndex] = useState(0);
-  const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
   const imageList = useRecoilValue(imageListAtom);
   const handleClick = (idx: number) => {
-    setOpenModal(true);
-    setIndex(idx);
+    navigate(`/${idx}`);
   };
 
   return (
     <Container>
-      {openModal && (
-        <Modal
-          len={imageList.length}
-          src={imageList[index].src}
-          author={imageList[index].author}
-          index={index}
-          setIndex={setIndex}
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-        />
-      )}
       <Gallery images={imageList} enableImageSelection={false} onClick={handleClick} />
-      {/* <img src={process.env.PUBLIC_URL + '/휴런로고.jpg'} alt="" onClick={handleClick} /> */}
     </Container>
   );
 };
